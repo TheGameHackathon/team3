@@ -1,0 +1,107 @@
+﻿body {
+    background-color: black;
+    color: green;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+.gameContainer {
+    width: 600px;
+    padding: 0;
+    margin: 30px auto;
+}
+
+.leaderboard {
+    margin-top: 50px;
+    display: none; /* change to none → block when leaderboard will be implemented */
+}
+
+.leaderboard-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.field {
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .field td {
+        border: 0;
+        padding: 0px;
+    }
+
+        
+        .field td:after {
+            content: ' ';
+            display: block;
+            margin-top: 100%;
+        }
+
+.animated {
+    transition: all 0.3s ease-out, z-index 0s ease;
+}
+
+.cell {
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    font-size: 55px;
+    color: #776e65;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60pt;
+    color: green;
+}
+
+.mainButtonContainer {
+    margin: 20px auto;
+    width: 200px;
+}
+.startButton {
+    height: 50px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.color0 {
+    background-color: blue;
+}
+
+.color1 {
+    background-color: red;
+}
+
+.color2 {
+    background-color: green;
+}
+
+.color3 {
+    background-color: cyan;
+}
+
+.color4 {
+    background-color: magenta;
+}
+
