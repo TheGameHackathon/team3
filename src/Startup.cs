@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using thegame.Mappings;
 
 namespace thegame
 {
@@ -17,6 +18,8 @@ namespace thegame
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            
+            services.AddAutoMapper(c => c.AddProfile(new MappingProfile()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
