@@ -1,3 +1,5 @@
+using thegame.Infrastructure;
+
 namespace thegame.Models
 {
     public class CellDto
