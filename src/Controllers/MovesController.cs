@@ -14,7 +14,7 @@ namespace thegame.Controllers
     {
 
         [HttpPost]
-        public IActionResult Moves(Guid gameId, [FromBody]UserInputDto userInput)
+        public IActionResult Moves(string gameId, [FromBody]UserInputDto userInput)
         {
             var game = TestData.AGameDto(gameId);
 
@@ -55,13 +55,10 @@ namespace thegame.Controllers
         private CellDto[] GetCellsFromMap(GameDto game, string element)
         {
             var result = new List<CellDto>();
-            foreach (var cellsDto in game.Cells)
+            foreach (var cell in game.Cells)
             {
-                foreach (var cell in cellsDto)
-                {
-                    if (cell.Type == element)
-                        result.Add(cell);
-                }
+                if (cell.Type == element)
+                    result.Add(cell);
             }
 
             return result.ToArray();

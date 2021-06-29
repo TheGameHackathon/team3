@@ -16,7 +16,7 @@ namespace thegame.Models
             Type = type;
             ZIndex = zIndex;
         }
-
+        
         public string Id { get; set; }
         public VectorDto Pos { get; set; }
         public int ZIndex { get; set; }

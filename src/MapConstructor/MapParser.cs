@@ -33,14 +33,16 @@ namespace thegame.MapConstructor
             var map = new List<List<Cell>>();
             for (var y = 0; y < charMap.Count; y++)
             {
+                map.Add(new List<Cell>());
                 for (var x = 0; x < charMap[0].Length; x++)
                 {
-                    map[y][x] = new Cell
+                    map[y].Add(new Cell
                     {
+                        Id = $"{x} {y}",
                         Pos = new Vector(x, y),
                         Type = GetEntityType(charMap[y][x]),
                         ZIndex = GetZIndex(charMap[y][x])
-                    };
+                    });
                 }
             }
 
