@@ -1,4 +1,4 @@
-namespace thegame.MapConstructor
+namespace thegame.MapPrimitives
 {
     public class Cell
     {

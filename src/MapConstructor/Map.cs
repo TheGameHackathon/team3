@@ -1,3 +1,4 @@
+using thegame.MapPrimitives;
 using thegame.Models;
 
 namespace thegame.MapConstructor

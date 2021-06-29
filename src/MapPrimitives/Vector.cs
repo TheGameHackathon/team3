@@ -1,17 +1,22 @@
 using System;
 
-namespace thegame.MapConstructor
+namespace thegame.MapPrimitives
 {
     public class Vector
     {
+        
         public int X { get; set; }
         public int Y { get; set; }
         
-        public Vector(int x = 0, int y = 0)
+        public Vector(int x, int y)
         {
             (X, Y) = (x, y);
         }
-        
+
+        public Vector()
+        {
+        }
+
         public override bool Equals(object obj) => obj is Vector other && this == other;
         public static Vector operator +(Vector a, Vector b) => new Vector(a.X + b.X, a.Y + b.Y);
         public static Vector operator -(Vector a, Vector b) => new Vector(a.X - b.X, a.Y - b.Y);

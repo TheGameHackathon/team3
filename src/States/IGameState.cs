@@ -1,5 +1,5 @@
 ﻿using System;
-using thegame.MapConstructor;
+using thegame.MapPrimitives;
 using thegame.Models;
 
 namespace thegame.State
@@ -7,6 +7,7 @@ namespace thegame.State
     public interface IGameState
     {
         public int Id { get; set; }
-        public Cell[][] Map{get; set; }
+        public Cell[] Map{ get; set; }
+        public GameDto Game{ get; set; }
     }
 }

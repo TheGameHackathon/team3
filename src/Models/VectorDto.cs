@@ -1,3 +1,5 @@
+using thegame.MapPrimitives;
+
 namespace thegame.Models
 {
     public class VectorDto
@@ -6,6 +8,10 @@ namespace thegame.Models
         {
             X = x;
             Y = y;
+        }
+
+        public VectorDto()
+        {
         }
 
         public int X { get; set; }

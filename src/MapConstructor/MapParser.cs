@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using AutoMapper.Configuration.Conventions;
 using thegame.Infrastructure;
+using thegame.MapPrimitives;
 using thegame.Models;
 
 namespace thegame.MapConstructor

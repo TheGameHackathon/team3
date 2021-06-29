@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using thegame.Mappings;
+using thegame.Services;
+using thegame.State;
 
 namespace thegame
 {
@@ -18,7 +20,9 @@ namespace thegame
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            
+
+            services.AddSingleton<IGameState, GameState>();
+            services.AddSingleton<IGamesRepository, GamesRepository>();
             services.AddAutoMapper(c => c.AddProfile(new MappingProfile()));
         }
 
