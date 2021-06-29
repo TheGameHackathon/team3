@@ -8,5 +8,7 @@ namespace thegame.State
     {
         public int Id { get; set; }
         public Cell[] Map { get; set; }
+
+        public GameDto Game { get; set; }
     }
 }
