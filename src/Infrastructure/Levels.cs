@@ -5,14 +5,14 @@ namespace thegame.Infrastructure
 {
     public class Levels
     {
-        public Dictionary<Guid, string> LevelsDict { get; }
+        public Dictionary<string, string> LevelsDict { get; }
 
         public Levels()
         {
-            LevelsDict = new Dictionary<Guid, string>
+            LevelsDict = new Dictionary<string, string>
             {
                 {
-                    Guid.Parse("level0"), @"##########
+                    "level0", @"##########
 #*.*.*B*.#
 #.B.B.B..#
 #........#
@@ -21,7 +21,7 @@ namespace thegame.Infrastructure
 ##########"
                 },
                 {
-                    Guid.Parse("level1"), @"##########
+                    "level1", @"##########
 #*.*.*B*.#
 #.B.B.B..#
 #..#.....#
