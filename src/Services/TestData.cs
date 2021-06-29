@@ -5,8 +5,10 @@ namespace thegame.Services
 {
     public class TestData
     {
+        private static VectorDto PlayerPosition { get; set ; }
         public static GameDto AGameDto(VectorDto movingObjectPosition)
         {
+            PlayerPosition = movingObjectPosition;
             var width = 10;
             var height = 8;
             var testCells = new[]
