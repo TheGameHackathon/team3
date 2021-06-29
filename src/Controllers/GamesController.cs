@@ -16,7 +16,7 @@ namespace thegame.Controllers
         {
             if (!levels.LevelsDict.ContainsKey(gameId)) 
                 return BadRequest();
-
+            
             var field = levels.LevelsDict[gameId];
 
             var cells = new CellDto[0][];

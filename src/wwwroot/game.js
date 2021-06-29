@@ -15,7 +15,7 @@ function handleApiErrors(result) {
 }
 
 async function startGame() {
-    game = await fetch("/api/games", { method: "POST" })
+    game = await fetch("/api/games/level0", { method: "POST" })
         .then(handleApiErrors);
     window.history.replaceState(game.id, "The Game", "/" + game.id);
     renderField(game);
