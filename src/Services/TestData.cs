@@ -1,27 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.StaticFiles;
 using thegame.Infrastructure;
+using thegame.MapConstructor;
 using thegame.Models;
 
 namespace thegame.Services
 {
     public class TestData
     {
-        public static GameDto AGameDto(VectorDto movingObjectPosition)
+        
+        private static Levels levels = new Levels();
+        private static IMapParser _mapParser = new MapParser();
+        public static GameDto AGameDto(Guid gameId)
         {
-            return null;
-            // var width = 10;
-            // var height = 8;
-            //
-            // var testCells = new []
-            // {
-            //     new CellDto("1", new VectorDto(2, 4), GameElements.Box, 10),
-            //     new CellDto("2", new VectorDto(5, 4), GameElements.Box, 10),
-            //     new CellDto("3", new VectorDto(3, 1), GameElements.Target, 0),
-            //     new CellDto("4", new VectorDto(1, 0), GameElements.Target, 0),
-            //     new CellDto("5", movingObjectPosition, GameElements.Player, 20),
-            // };
-            // return new GameDto(testCells, true, true, width, height, Guid.Empty, movingObjectPosition.X == 0, movingObjectPosition.Y);
+            var field = levels.LevelsDict[gameId];
+
+            var cells = _mapParser.ParseMap("testMap.txt").Cells;
+
+            var cellsDto = new[]
+            {
+                new[] {new CellDto("0", new VectorDto(0, 0), "AaA", 12)}
+            };
+            
+            var isFinished = false;
+            var score = 0;
+            
+            return new GameDto(cellsDto, true, true, cells[0].Length, cells.Length, Guid.Empty, isFinished, score);
         }
     }
 }

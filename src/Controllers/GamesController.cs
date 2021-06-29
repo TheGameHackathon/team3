@@ -16,14 +16,8 @@ namespace thegame.Controllers
         {
             if (!levels.LevelsDict.ContainsKey(gameId)) 
                 return BadRequest();
-
-            var field = levels.LevelsDict[gameId];
-
-            var cells = new CellDto[0][];
-            var isFinished = false;
-            var score = 0;
             
-            return Ok(new GameDto(cells, true, true, cells[0].Length, cells.Length, Guid.Empty, isFinished, score));
+            return Ok(TestData.AGameDto(gameId));
         }
     }
 }
