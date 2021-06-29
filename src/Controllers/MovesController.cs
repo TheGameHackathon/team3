@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using thegame.Infrastructure;
 using thegame.Models;
 using thegame.Services;
 
@@ -16,20 +17,20 @@ namespace thegame.Controllers
 
             if (userInput.KeyPressed != null)
             {
-                var userPos = game.Cells.First(c => c.Type == "color4").Pos;
+                var userPos = game.Cells.First(c => c.Type == GameElements.Player).Pos;
                 switch (userInput.KeyPressed)
                 {
                     case 38:
-                        game.Cells.First(c => c.Type == "color4").Pos = new VectorDto(userPos.X , userPos.Y-1);
+                        game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X , userPos.Y-1);
                         break;
                     case 37:
-                        game.Cells.First(c => c.Type == "color4").Pos = new VectorDto(userPos.X , userPos.Y+1);
+                        game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X , userPos.Y+1);
                         break;
                     case 39:
-                        game.Cells.First(c => c.Type == "color4").Pos = new VectorDto(userPos.X+1 , userPos.Y);
+                        game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X+1 , userPos.Y);
                         break;
                     case 40:
-                        game.Cells.First(c => c.Type == "color4").Pos = new VectorDto(userPos.X -1, userPos.Y);
+                        game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X -1, userPos.Y);
                         break;
                 }
             }
