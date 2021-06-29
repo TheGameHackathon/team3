@@ -1,4 +1,5 @@
 ﻿using System;
+using thegame.Infrastructure;
 using thegame.Models;
 
 namespace thegame.Services
@@ -13,11 +14,11 @@ namespace thegame.Services
             var height = 8;
             var testCells = new[]
             {
-                new CellDto("1", new VectorDto(2, 4), "color1", "", 0),
-                new CellDto("2", new VectorDto(5, 4), "color1", "", 0),
-                new CellDto("3", new VectorDto(3, 1), "color2", "", 20),
-                new CellDto("4", new VectorDto(1, 0), "color2", "", 20),
-                new CellDto("5", movingObjectPosition, "color4", "☺", 10),
+                new CellDto("1", new VectorDto(2, 4), GameElements.Box, "", 10),
+                new CellDto("2", new VectorDto(5, 4), GameElements.Box, "", 10),
+                new CellDto("3", new VectorDto(3, 1), GameElements.Target, "", 0),
+                new CellDto("4", new VectorDto(1, 0), GameElements.Target, "", 0),
+                new CellDto("5", movingObjectPosition, GameElements.Player, "", 20),
             };
             return new GameDto(testCells, true, true, width, height, Guid.Empty, movingObjectPosition.X == 0, movingObjectPosition.Y);
         }
