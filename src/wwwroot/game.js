@@ -115,7 +115,7 @@ function updateCellDiv(cellDiv, cell) {
     cellDiv.style.left = rect.left + "px";
     cellDiv.style.zIndex = cell.zIndex;
     cellDiv.className = cell.type + " animated cell";
-    cellDiv.innerText = "";//cell.content;
+    cellDiv.innerText = "";
 }
 
 

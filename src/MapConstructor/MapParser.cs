@@ -13,15 +13,26 @@ namespace thegame.MapConstructor
         {
             var charMap = new List<char[]>();
             var result = new Map();
-            using var mapFile = new StreamReader(pathToMap);
-            while (true)
-            {
-                var mapLine = mapFile.ReadLine()?.ToCharArray();
-                if (mapLine != null)
-                    charMap.Add(mapLine);
-                else
-                    break;
-            }
+            // using var mapFile = new StreamReader(pathToMap);
+            // while (true)
+            // {
+            //     var mapLine = mapFile.ReadLine()?.ToCharArray();
+            //     if (mapLine != null)
+            //         charMap.Add(mapLine);
+            //     else
+            //         break;
+            // }
+
+            charMap = new List<char[]>
+            {   
+                new []{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+                new []{'#', '*', '.', '*', '.', '*', 'B', '*', '.', '#'},
+                new []{'#', '.', 'B', '.', 'B', '.', 'B', '.', '.', '#'},
+                new []{'#', '.', '.', '.', '.', '.', '.', '.', '.', '#'},
+                new []{'#', '.', '.', '.', 'P', '.', '.', '.', '.', '#'},
+                new []{'#', '.', '.', '.', '.', '.', '.', '.', '.', '#'},
+                new []{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+            };
             result.Height = charMap.Count;
             result.Width = charMap[0].Length;
             result.Cells = CreateCellMap(charMap);
