@@ -12,7 +12,7 @@ namespace thegame.Controllers
         private Levels levels = new Levels();
         
         [HttpPost]
-        public IActionResult Index([FromRoute] Guid gameId)
+        public IActionResult Index([FromRoute] string gameId)
         {
             if (!levels.LevelsDict.ContainsKey(gameId)) 
                 return BadRequest();
