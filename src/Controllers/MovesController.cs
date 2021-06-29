@@ -10,6 +10,7 @@ namespace thegame.Controllers
     [Route("api/games/{gameId}/moves")]
     public class MovesController : Controller
     {
+
         [HttpPost]
         public IActionResult Moves(Guid gameId, [FromBody]UserInputDto userInput)
         {
@@ -18,18 +19,18 @@ namespace thegame.Controllers
             if (userInput.KeyPressed != null)
             {
                 var userPos = game.Cells.First(c => c.Type == GameElements.Player).Pos;
-                switch (userInput.KeyPressed)
+                switch ((KeyboardButtons)userInput.KeyPressed)
                 {
-                    case 38:
+                    case KeyboardButtons.Up:
                         game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X , userPos.Y-1);
                         break;
-                    case 37:
+                    case KeyboardButtons.Down:
                         game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X , userPos.Y+1);
                         break;
-                    case 39:
+                    case KeyboardButtons.Right:
                         game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X+1 , userPos.Y);
                         break;
-                    case 40:
+                    case KeyboardButtons.Left:
                         game.Cells.First(c => c.Type == GameElements.Player).Pos = new VectorDto(userPos.X -1, userPos.Y);
                         break;
                 }

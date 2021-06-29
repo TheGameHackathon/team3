@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Data;
+using thegame.Infrastructure;
 using thegame.Models;
+using thegame.State;
 
 namespace thegame.Services
 {
-    public class GamesRepo
+    public class GamesRepository: IGamesRepository
     {
-        private VectorDto PlayerPosition { get; set; }
-        private List<VectorDto> BoxesPosition { get; set; }
-        public GamesRepo(VectorDto playerPosition)
+        private GameState GameState { get; set; }
+
+        public void UpdateState(KeyboardButtons button)
         {
-            PlayerPosition = playerPosition;
+            
+            return;
         }
     }
 }
