@@ -1,17 +1,21 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace thegame
+var builder = WebApplication.CreateBuilder();
+
+builder.Services.AddMvc();
+
+var app = builder.Build();
+
+app.UseDeveloperExceptionPage();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseEndpoints(endpoints => endpoints.MapControllers());
+app.Use((context, next) =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    context.Request.Path = "/index.html";
+    return next();
+});
+app.UseStaticFiles();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-    }
-}
+app.Run();
