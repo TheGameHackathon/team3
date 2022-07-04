@@ -26,13 +26,12 @@ XXXXXXXX";
 =====1==
 ========
 =1==111=
-========
 ========";
 
     public GameMap ParseLevel()
     {
         var l1StaticSplited = Level1Static.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
-        var l1DynamicSplited = Level1Dynamic.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
+        var l1DynamicSplited = Level1Dynamic.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
         if (l1StaticSplited.Length == 0 || l1DynamicSplited.Length == 0) return new GameMap();
 
         var width = l1StaticSplited[0].Length;
