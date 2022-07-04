@@ -42,7 +42,7 @@ namespace thegame.Services
         private static CellDto GetCell(IEntity e)
         {
             id++;
-            return new CellDto(id.ToString(), new VectorDto(e.X, e.Y), e.Image, "", 0);
+            return new CellDto(id.ToString(), new VectorDto(e.Y, e.X), e.Image, "", 0);
         }
     }
 }
