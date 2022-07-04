@@ -17,6 +17,7 @@ X_X_0_XX
 X__0__0X
 X___0__X
 XXXXXXXX";
+
     private const string Level1Dynamic =
         @"========
 ========
@@ -24,9 +25,11 @@ XXXXXXXX";
 ====1===
 ====1===
 ========
-=1==111=
+=1=111==
 ========
 ========";
+
+    private const string EmptyColor = "";
 
     public GameMap ParseLevel()
     {
@@ -47,12 +50,15 @@ XXXXXXXX";
                 var newEntity = Parse(l1StaticSplited[i][j], i, j, out var isStorage);
 
                 if (isStorage)
+                {
                     storages.Add((Storage)newEntity);
+                    entities[i, j] = new Empty(i, j, EmptyColor);
+                }
                 else entities[i, j] = newEntity;
 
                 if (l1DynamicSplited[i][j] == '=') continue;
-                
-                var newEntityDynamic = Parse(l1StaticSplited[i][j], i, j, out var _);
+
+                var newEntityDynamic = Parse(l1DynamicSplited[i][j], i, j, out var _);
                 entities[i, j] = newEntityDynamic;
             }
         }
@@ -67,7 +73,7 @@ XXXXXXXX";
         switch (x)
         {
             case '_':
-                return new Empty(i, j, "color0");
+                return new Empty(i, j, EmptyColor);
             case 'X':
                 return new Wall(i, j, "wall");
             case '0':
@@ -79,6 +85,6 @@ XXXXXXXX";
                 return new Player(i, j, "player");
         }
 
-        return new Empty(i, j, "color0");
+        return new Empty(i, j, EmptyColor);
     }
 }
