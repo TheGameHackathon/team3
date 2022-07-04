@@ -19,11 +19,15 @@ namespace thegame.Controllers
             _sessionRepository = sessionRepository;
         }
 
+        private int X = 2;
         [HttpPost]
         public IActionResult Moves(Guid gameId, [FromBody]UserInputDto userInput)
         {
+            
             var gameStatus = _sessionRepository.GetSession(gameId);
             var map = gameStatus.Map.map;
+
+            /*
             Player player = null;
             int x = 0, y = 0;
             for (var i = 0; i < map.GetLength(0); i++)
@@ -39,8 +43,12 @@ namespace thegame.Controllers
                     }
                 }
             }
+            */
+            //map[X++, y] = player;
 
-            
+            var game = ParserDto.ParseGameMap(gameStatus);
+            return Ok(game);
+            /*
             if (userInput.KeyPressed == 87) // W
             {
                 player.Y--;
@@ -68,9 +76,9 @@ namespace thegame.Controllers
                 map[x + 1, y] = player;
                 map[x, y] = new Empty(player.X, player.Y, "color1");
             }
-
-            var game = ParserDto.ParseGameMap(gameStatus);
-            return Ok(game);
+            */
+            //var game = ParserDto.ParseGameMap(gameStatus);
+            //return Ok(game);
         }
     }
 }
