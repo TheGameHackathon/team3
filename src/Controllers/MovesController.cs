@@ -27,8 +27,7 @@ namespace thegame.Controllers
             // if (userInput.ClickedPos != null)
             //     game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
             //
-            // // ParserDto.ParseGameMap(new GameStatus(map, Game.Models.Status.ContinueGame))
-            // return Ok();
+            // return Ok(ParserDto.ParseGameMap(new GameStatus(map, Game.Models.Status.ContinueGame)));
             
             var game = TestData.AGameDto(userInput.ClickedPos ?? new VectorDto(1, 1));
             if (userInput.ClickedPos != null)

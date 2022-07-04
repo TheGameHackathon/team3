@@ -11,8 +11,8 @@ namespace thegame.Services
             var repo = new GamesRepository();
             var level = repo.ParseLevel();
 
-            var width = level.map.GetLength(0);
-            var height = level.map.GetLength(1);
+            var height = level.map.GetLength(0);
+            var width = level.map.GetLength(1);
             // var width = 10;
             // var height = 8;
             // var testCells = new[]
@@ -27,14 +27,22 @@ namespace thegame.Services
             var testCells = new List<CellDto>();
             var id = 1;
 
-            for (var j = 0; j < height; j++)
+            for (var i = 0; i < height; i++)
             {
-                for (var i = 0; i < width; i++)
+                for (var j = 0; j < width; j++)
                 {
                     if (level.map[i, j] == null) continue;
-                testCells.Add(new CellDto(id.ToString(), new VectorDto(i, j), level.map[i, j].Image, "", 0));
-                id++;
+                    testCells.Add(new CellDto(id.ToString(), new VectorDto(j,  i),
+                        level.map[i, j].Image, "", 0));
+                    id++;
                 }
+            }
+
+            foreach (var storage in level.storages)
+            {
+                testCells.Add(new CellDto(id.ToString(), new VectorDto(storage.Y,  storage.X),
+                    storage.Image, "", 10));
+                id++;
             }
 
             return new GameDto(testCells.ToArray(), true, true, width, height, Guid.Empty, movingObjectPosition.X == 0,
