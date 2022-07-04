@@ -20,6 +20,13 @@ namespace thegame.Services
                 cells.Add(GetCell(e));
             }
 
+            foreach (var storage in status.Map.storages)
+            {
+                id++;
+                cells.Add(new CellDto(id.ToString(), new VectorDto(storage.Y, storage.X),
+                    storage.Image, "", 10));
+            }
+
 
             return new GameDto(cells.ToArray(), 
                 true, 
