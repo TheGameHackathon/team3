@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using thegame.Game;
 using thegame.Game.MapRepository;
+using thegame.Game.Models;
 using thegame.Models;
 using thegame.Services;
 
@@ -21,17 +22,54 @@ namespace thegame.Controllers
         [HttpPost]
         public IActionResult Moves(Guid gameId, [FromBody]UserInputDto userInput)
         {
-            // // var map = _sessionRepository.GetSession(gameId).Map;
-            // var game = TestData.AGameDto(userInput.ClickedPos ?? new VectorDto(1, 1));
-            //
-            // if (userInput.ClickedPos != null)
-            //     game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
-            //
-            // return Ok(ParserDto.ParseGameMap(new GameStatus(map, Game.Models.Status.ContinueGame)));
+            var gameStatus = _sessionRepository.GetSession(gameId);
+            var map = gameStatus.Map.map;
+            Player player = null;
+            int x = 0, y = 0;
+            for (var i = 0; i < map.GetLength(0); i++)
+            {
+                for (var j = 0; j < map.GetLength(1); j++)
+                {
+                    if (map[i, j] is Player)
+                    {
+                        player = (Player)map[i, j];
+                        x = i;
+                        y = j;
+                        break;
+                    }
+                }
+            }
+
             
-            var game = TestData.AGameDto(userInput.ClickedPos ?? new VectorDto(1, 1));
-            if (userInput.ClickedPos != null)
-                game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
+            if (userInput.KeyPressed == 87) // W
+            {
+                player.Y--;
+                map[x, y - 1] = player;
+                map[x, y] = new Empty(player.X, player.Y, "color1");
+            }
+
+            if (userInput.KeyPressed == 65) // A
+            {
+                player.X--;
+                map[x - 1, y] = player;
+                map[x, y] = new Empty(player.X, player.Y, "color1");
+            }
+
+            if (userInput.KeyPressed == 83) // S
+            {
+                player.Y++;
+                map[x, y + 1] = player;
+                map[x, y] = new Empty(player.X, player.Y, "color1");
+            }
+
+            if (userInput.KeyPressed == 68) // D
+            {
+                player.X++;
+                map[x + 1, y] = player;
+                map[x, y] = new Empty(player.X, player.Y, "color1");
+            }
+
+            var game = ParserDto.ParseGameMap(gameStatus);
             return Ok(game);
         }
     }
