@@ -25,6 +25,7 @@ XXXXXXXX";
 ====1===
 ========
 =1==111=
+========
 ========";
 
     public GameMap ParseLevel()

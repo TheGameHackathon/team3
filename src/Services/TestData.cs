@@ -27,13 +27,13 @@ namespace thegame.Services
             var testCells = new List<CellDto>();
             var id = 1;
 
-            for (var i = 0; i < width; i++)
+            for (var j = 0; j < height; j++)
             {
-                for (var j = 0; j < height; j++)
+                for (var i = 0; i < width; i++)
                 {
                     if (level.map[i, j] == null) continue;
-                    testCells.Add(new CellDto(id.ToString(), new VectorDto(i, j), level.map[i, j].Image, "", 0));
-                    id++;
+                testCells.Add(new CellDto(id.ToString(), new VectorDto(i, j), level.map[i, j].Image, "", 0));
+                id++;
                 }
             }
 

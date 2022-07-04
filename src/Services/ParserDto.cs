@@ -30,6 +30,8 @@ namespace thegame.Services
         private static CellDto GetCell(IEntity e)
         {
 
+
+
             if(e is IStatic)
                 return new CellDto("1", new VectorDto(e.X, e.Y), "color1", "", 0);
             return new CellDto("1", new VectorDto(e.X, e.Y), "color2", "", 0);
