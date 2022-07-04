@@ -19,7 +19,7 @@ namespace thegame.Controllers
         [HttpPost]
         public IActionResult Index()
         {
-            return Ok(sessionRepository.GetSession(default(Guid)));
+            // return Ok(sessionRepository.GetSession(default(Guid)));
 
             return Ok(TestData.AGameDto(new VectorDto(1, 1)));
         }

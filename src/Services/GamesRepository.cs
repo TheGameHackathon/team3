@@ -20,24 +20,23 @@ XXXXXXXX";
     private const string Level1Dynamic =
         @"========
 ========
-==P1====
+==51====
 ====1===
-=====1==
-=====1==
+====1===
 ========
 =1==111=
 ========";
 
     public GameMap ParseLevel()
     {
-        var l1StaticSplited = Level1Static.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
+        var l1StaticSplited = Level1Static.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
         var l1DynamicSplited = Level1Dynamic.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
         if (l1StaticSplited.Length == 0 || l1DynamicSplited.Length == 0) return new GameMap();
 
         var width = l1StaticSplited[0].Length;
         var height = l1StaticSplited.Length;
 
-        var entities = new IEntity[width, height];
+        var entities = new IEntity[height, width];
         var storages = new List<Storage>();
 
         for (var i = 0; i < height; i++)
@@ -67,18 +66,18 @@ XXXXXXXX";
         switch (x)
         {
             case '_':
-                return new Empty(i, j, "");
+                return new Empty(i, j, "color0");
             case 'X':
-                return new Wall(i, j, "");
+                return new Wall(i, j, "wall");
             case '0':
                 isStorage = true;
-                return new Storage(i, j, "");
+                return new Storage(i, j, "target");
             case '1':
-                return new Box(i, j, "");
-            case 'P':
-                return new Player(i, j, "");
+                return new Box(i, j, "box");
+            case '5':
+                return new Player(i, j, "player");
         }
 
-        return new Empty(i, j, "");
+        return new Empty(i, j, "color0");
     }
 }
