@@ -1,5 +1,10 @@
-namespace thegame.Services;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
-public class GamesRepository
+namespace thegame.Services
 {
+    public class GamesRepo
+    {
+    }
 }
