@@ -12,7 +12,7 @@ namespace thegame.Services
         {
             List<CellDto> cells = new List<CellDto>();
             id = 1;
-            foreach(var e in status.Map.map)
+            foreach (var e in status.Map.map)
             {
                 if (e == null)
                     continue;
@@ -24,25 +24,26 @@ namespace thegame.Services
             {
                 id++;
                 cells.Add(new CellDto(id.ToString(), new VectorDto(storage.Y, storage.X),
-                    storage.Image, "", 10));
+                    storage.Image, "", storage.ZIndex));
             }
 
 
-            return new GameDto(cells.ToArray(), 
-                true, 
-                false, 
-                status.Map.map.GetLength(1), 
-                status.Map.map.GetLength(0), 
-                status.Id, 
-                status.Status == Game.Models.Status.Vin, 
+            return new GameDto(cells.ToArray(),
+                true,
+                false,
+                status.Map.map.GetLength(1),
+                status.Map.map.GetLength(0),
+                status.Id,
+                status.Status == Game.Models.Status.Vin,
                 status.Score);
         }
 
         private static int id;
+
         private static CellDto GetCell(IEntity e)
         {
             id++;
-            return new CellDto(id.ToString(), new VectorDto(e.Y, e.X), e.Image, "", 0);
+            return new CellDto(id.ToString(), new VectorDto(e.Y, e.X), e.Image, "", e.ZIndex);
         }
     }
 }
