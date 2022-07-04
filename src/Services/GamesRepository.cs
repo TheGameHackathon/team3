@@ -21,7 +21,7 @@ XXXXXXXX";
     private const string Level1Dynamic =
         @"========
 ========
-==51====
+==P1====
 ====1===
 ====1===
 ========
@@ -80,9 +80,15 @@ XXXXXXXX";
                 isStorage = true;
                 return new Storage(i, j, "target");
             case '1':
-                return new Box(i, j, "box");
-            case '5':
-                return new Player(i, j, "player");
+                return new Box(i, j, "box")
+                {
+                    ZIndex = 10
+                };
+            case 'P':
+                return new Player(i, j, "player")
+                {
+                    ZIndex = 10
+                };
         }
 
         return new Empty(i, j, EmptyColor);
