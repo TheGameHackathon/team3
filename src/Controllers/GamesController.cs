@@ -20,6 +20,7 @@ namespace thegame.Controllers
         [HttpPost]
         public IActionResult Index()
         {
+            
             var map = sessionRepository.CreateSession();
             return Ok(ParserDto.ParseGameMap(map));
         }
