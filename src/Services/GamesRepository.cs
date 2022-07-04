@@ -47,9 +47,9 @@ XXXXXXXX";
         {
             for (var j = 0; j < width; j++)
             {
-                var newEntity = Parse(l1StaticSplited[i][j], i, j, out var isStorage);
+                var newEntity = Parse(l1StaticSplited[i][j], i, j, out var isTarget);
 
-                if (isStorage)
+                if (isTarget)
                 {
                     storages.Add((Storage)newEntity);
                     entities[i, j] = new Empty(i, j, EmptyColor);
@@ -58,7 +58,9 @@ XXXXXXXX";
 
                 if (l1DynamicSplited[i][j] == '=') continue;
 
-                var newEntityDynamic = Parse(l1DynamicSplited[i][j], i, j, out var _);
+                var newEntityDynamic = Parse(l1DynamicSplited[i][j], i, j, out _);
+                if (newEntityDynamic.Image == "box" && l1StaticSplited[i][j] == '0')
+                    newEntityDynamic.Image = "boxOnTarget";
                 entities[i, j] = newEntityDynamic;
             }
         }
