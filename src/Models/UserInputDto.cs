@@ -2,7 +2,7 @@ namespace thegame.Models
 {
     public class UserInputDto
     {
-        public UserInputDto(char keyPressed, VectorDto clickedPos)
+        public UserInputDto(byte keyPressed, VectorDto clickedPos)
         {
             KeyPressed = keyPressed;
             ClickedPos = clickedPos;
