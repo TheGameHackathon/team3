@@ -1,6 +1,6 @@
 ﻿namespace thegame.Game.Models
 {
-    public class IStatic
+    public class IStatic : IEntity
     {
     }
 }

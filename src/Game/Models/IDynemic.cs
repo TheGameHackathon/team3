@@ -1,6 +1,6 @@
 ﻿namespace thegame.Game.Models
 {
-    public class IDynemic
+    public class IDynemic : IEntity
     {
     }
 }
