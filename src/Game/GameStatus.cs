@@ -4,9 +4,9 @@ namespace thegame.Game
 {
     public class GameStatus
     {
-        GameStatus map;
+        GameMap map;
         Status status;
-        public GameStatus(GameStatus map, Status status)
+        public GameStatus(GameMap map, Status status)
         {
             this.map = map;
             this.status = status;
