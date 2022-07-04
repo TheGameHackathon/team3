@@ -1,4 +1,6 @@
-﻿using thegame.Game;
+﻿using System;
+using thegame.Game;
+using thegame.Game.Models;
 using thegame.Models;
 
 namespace thegame.Services
@@ -11,7 +13,7 @@ namespace thegame.Services
 
             foreach(var e in status.Map.map)
             {
-                
+                cells[e.X + e.Y] = GetCell(e);
             }
 
 
@@ -23,6 +25,12 @@ namespace thegame.Services
                 status.Id, 
                 status.Status == Game.Models.Status.Vin, 
                 status.Score);
+        }
+
+        private static CellDto GetCell(IEntity e)
+        {
+
+            return new CellDto("1", new VectorDto(e.X, e.Y), e.Image, "-", 1);
         }
     }
 }

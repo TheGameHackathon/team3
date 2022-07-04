@@ -29,7 +29,7 @@ XXXXXXXX";
 ========
 ========";
 
-    private GameMap ParseLevel()
+    public GameMap ParseLevel()
     {
         var l1StaticSplited = Level1Static.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
         var l1DynamicSplited = Level1Dynamic.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
