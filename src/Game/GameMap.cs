@@ -2,16 +2,13 @@
 
 namespace thegame.Game
 {
-    public class GameMap
+    public class GameStatus
     {
-        private readonly IEntity[][] map;
+        private readonly IEntity[,] map;
 
-        public GameMap(IEntity[][] map)
+        public GameStatus(IEntity[,] map)
         {
 
         }
-
-
-
     }
 }
