@@ -6,6 +6,7 @@ namespace thegame.Game
     {
         GameMap map;
         Status status;
+
         public GameStatus(GameMap map, Status status)
         {
             this.map = map;
