@@ -8,7 +8,7 @@ namespace thegame.Models
             ClickedPos = clickedPos;
         }
 
-        public char KeyPressed { get; set; }
+        public byte KeyPressed { get; set; }
         public VectorDto ClickedPos { get; set; }
     }
 }
