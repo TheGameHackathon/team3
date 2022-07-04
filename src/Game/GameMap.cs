@@ -4,7 +4,7 @@ namespace thegame.Game
 {
     public class GameMap
     {
-        private readonly IEntity[,] map;
+        public readonly IEntity[,] map;
 
         public GameMap(IEntity[,] map)
         {
