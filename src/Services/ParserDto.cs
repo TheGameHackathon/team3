@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using thegame.Game;
 using thegame.Game.Models;
 using thegame.Models;
@@ -9,40 +10,36 @@ namespace thegame.Services
     {
         public static GameDto ParseGameMap(GameStatus status)
         {
-            List<CellDto> cells = new List<CellDto>();
-            id = 1;
-            foreach (var e in status.Map.map)
+            //CellDto[] cells = new CellDto[status.Map.map.GetLength(1)+ status.Map.map.GetLength(0)];
+            List<CellDto> list = new List<CellDto>();
+            int id = 1;
+            foreach(var e in status.Map.map)
             {
-                if (e == null)
-                    continue;
-
-                cells.Add(GetCell(e));
+                list.Add(new CellDto((id++).ToString(), new VectorDto(e.Y, e.X), e.Image, "", 0));
             }
 
             foreach (var storage in status.Map.storages)
             {
+                list.Add(new CellDto(id.ToString(), new VectorDto(storage.Y, storage.X),
+                    storage.Image, "", 10));
                 id++;
-                cells.Add(new CellDto(id.ToString(), new VectorDto(storage.Y, storage.X),
-                    storage.Image, "", storage.ZIndex));
             }
 
-
-            return new GameDto(cells.ToArray(),
-                true,
-                false,
-                status.Map.map.GetLength(1),
-                status.Map.map.GetLength(0),
-                status.Id,
-                status.Status == Game.Models.Status.Vin,
+            return new GameDto(list.ToArray(),
+                true, 
+                false, 
+                status.Map.map.GetLength(1), 
+                status.Map.map.GetLength(0), 
+                status.Id, 
+                status.Status == Game.Models.Status.Vin, 
                 status.Score);
         }
 
-        private static int id;
-
-        private static CellDto GetCell(IEntity e)
-        {
-            id++;
-            return new CellDto(id.ToString(), new VectorDto(e.Y, e.X), e.Image, "", e.ZIndex);
-        }
+        //private static CellDto GetCell(IEntity e)
+        //{
+        //    //if(e is IStatic)
+        //    //    return new CellDto("1", new VectorDto(e.X, e.Y), "color3", "", 0);
+        //    //return new CellDto("1", new VectorDto(e.X, e.Y), e.Image, "-", 1);
+        //}
     }
 }
