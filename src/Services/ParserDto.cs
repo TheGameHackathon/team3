@@ -7,9 +7,9 @@ namespace thegame.Services
     {
         public static GameDto ParseGameMap(GameStatus status)
         {
-            CellDto[] cells = new CellDto[status.map.map.GetLength(1)+ status.map.map.GetLength(0)];
+            CellDto[] cells = new CellDto[status.Map.map.GetLength(1)+ status.Map.map.GetLength(0)];
 
-            foreach(var e in status.map.map)
+            foreach(var e in status.Map.map)
             {
                 
             }
@@ -18,10 +18,10 @@ namespace thegame.Services
             return new GameDto(cells, 
                 true, 
                 false, 
-                status.map.map.GetLength(1), 
-                status.map.map.GetLength(0), 
+                status.Map.map.GetLength(1), 
+                status.Map.map.GetLength(0), 
                 status.Id, 
-                status.status == Game.Models.Status.Vin, 
+                status.Status == Game.Models.Status.Vin, 
                 status.Score);
         }
     }

@@ -5,17 +5,18 @@ namespace thegame.Game
 {
     public class GameMap
     {
-        private readonly IEntity[,] mapStatic;
-        private readonly List<Storage> storages;
+        public IEntity[,] map { get; private set; }
+        public List<Storage> storages { get; private set; }
 
         public GameMap() : this(new IEntity[0, 0], new List<Storage>())
         {
+
         }
 
 
         public GameMap(IEntity[,] mapStatic, List<Storage> storages)
         {
-            this.mapStatic = mapStatic;
+            this.map = mapStatic;
             this.storages = storages;
         }
     }

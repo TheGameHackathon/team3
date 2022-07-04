@@ -5,7 +5,7 @@ using thegame.Game.Models;
 
 namespace thegame.Services;
 
-namespace thegame.Services
+public class GamesRepository
 {
     private const string Level1Static =
         @"__XXXXX_

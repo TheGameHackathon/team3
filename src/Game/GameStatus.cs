@@ -7,13 +7,13 @@ namespace thegame.Game
     {
         public Guid Id;
         public int Score;
-        public GameMap map;
-        public Status status;
+        public GameMap Map;
+        public Status Status;
 
         public GameStatus(GameMap map, Status status)
         {
-            this.map = map;
-            this.status = status;
+            this.Map = map;
+            this.Status = status;
         }
     }
 }
