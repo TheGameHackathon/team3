@@ -33,8 +33,8 @@ XXXXXXXX";
 
     public GameMap ParseLevel()
     {
-        var l1StaticSplited = Level1Static.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
-        var l1DynamicSplited = Level1Dynamic.Split("\r\n", StringSplitOptions.RemoveEmptyEntries);
+        var l1StaticSplited = Level1Static.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        var l1DynamicSplited = Level1Dynamic.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
         if (l1StaticSplited.Length == 0 || l1DynamicSplited.Length == 0) return new GameMap();
 
         var width = l1StaticSplited[0].Length;

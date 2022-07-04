@@ -33,6 +33,7 @@ namespace thegame.Services
                 for (var j = 0; j < width; j++)
                 {
                     if (level.map[i, j] == null) continue;
+                    
                     testCells.Add(new CellDto(id.ToString(), new VectorDto(j,  i),
                         level.map[i, j].Image, "", level.map[i, j].ZIndex));
                     id++;
