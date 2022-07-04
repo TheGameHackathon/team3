@@ -32,19 +32,17 @@ namespace thegame.Services
             {
                 for (var j = 0; j < width; j++)
                 {
-                    if (level.map[i, j] == null) continue;
+                    if (level.map[i, j].Image == "") continue;
                     
-                    testCells.Add(new CellDto(id.ToString(), new VectorDto(j,  i),
+                    testCells.Add(new CellDto(id++.ToString(), new VectorDto(j,  i),
                         level.map[i, j].Image, "", level.map[i, j].ZIndex));
-                    id++;
                 }
             }
 
             foreach (var storage in level.storages)
             {
-                testCells.Add(new CellDto(id.ToString(), new VectorDto(storage.Y,  storage.X),
+                testCells.Add(new CellDto(id++.ToString(), new VectorDto(storage.Y,  storage.X),
                     storage.Image, "", storage.ZIndex));
-                id++;
             }
 
             return new GameDto(testCells.ToArray(), true, true, width, height, Guid.Empty, movingObjectPosition.X == 0,

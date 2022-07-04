@@ -29,12 +29,31 @@ XXXXXXXX";
 ========
 ========";
 
+    private const string WonStatic =
+        @"W_W_W__WW__W___W
+W_W_W_W__W_WW__W
+W_W_W_W__W_W_W_W
+W_W_W_W__W_W__WW
+_W_W___WW__W___W";
+
+    private const string WonDynamic =
+        @"================
+================
+================
+================
+================";
+
     private const string EmptyColor = "";
 
-    public GameMap ParseLevel()
+    public GameMap GetWonLevel()
     {
-        var l1StaticSplited = Level1Static.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-        var l1DynamicSplited = Level1Dynamic.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        return ParseLevel(WonStatic, WonDynamic);
+    }
+
+    public GameMap ParseLevel(string staticData = Level1Static, string dynamicData = Level1Dynamic)
+    {
+        var l1StaticSplited = staticData.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        var l1DynamicSplited = dynamicData.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
         if (l1StaticSplited.Length == 0 || l1DynamicSplited.Length == 0) return new GameMap();
 
         var width = l1StaticSplited[0].Length;
@@ -88,6 +107,11 @@ XXXXXXXX";
                 };
             case 'P':
                 return new Player(i, j, "player")
+                {
+                    ZIndex = 10
+                };
+            case 'W':
+                return new Empty(i, j, "color2")
                 {
                     ZIndex = 10
                 };

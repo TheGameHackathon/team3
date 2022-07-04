@@ -16,6 +16,9 @@ namespace thegame.Game.MapRepository
         {
             gp = new GamesRepository();
             asd = gp.ParseLevel();
+            
+            // вызвать, если игрок победил
+            // asd = gp.GetWonLevel();
         }
 
         public GameStatus CreateSession()

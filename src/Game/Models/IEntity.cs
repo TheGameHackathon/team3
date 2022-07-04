@@ -7,7 +7,7 @@
         public int Y { get; set; }
         public int ZIndex { get; set; }
 
-        public IEntity(int x, int y, string image, int zIndex = 0)
+        public IEntity(int x, int y, string image, int zIndex = 5)
         {
             X = x;
             Y = y;
