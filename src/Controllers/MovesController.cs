@@ -21,19 +21,9 @@ namespace thegame.Controllers
         [HttpPost]
         public IActionResult Moves(Guid gameId, [FromBody]UserInputDto userInput)
         {
-            // // var map = _sessionRepository.GetSession(gameId).Map;
-            // var game = TestData.AGameDto(userInput.ClickedPos ?? new VectorDto(1, 1));
-            //
-            // if (userInput.ClickedPos != null)
-            //     game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
-            //
-            // // ParserDto.ParseGameMap(new GameStatus(map, Game.Models.Status.ContinueGame))
-            // return Ok();
-            
-            var game = TestData.AGameDto(userInput.ClickedPos ?? new VectorDto(1, 1));
-            if (userInput.ClickedPos != null)
-                game.Cells.First(c => c.Type == "color4").Pos = userInput.ClickedPos;
-            return Ok(game);
+            var map = _sessionRepository.GetSession(gameId).Map;
+
+            return Ok(ParserDto.ParseGameMap(new GameStatus(map, Game.Models.Status.ContinueGame)));
         }
     }
 }

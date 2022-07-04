@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using thegame.Game;
 using thegame.Game.Models;
 using thegame.Models;
@@ -9,15 +10,18 @@ namespace thegame.Services
     {
         public static GameDto ParseGameMap(GameStatus status)
         {
-            CellDto[] cells = new CellDto[status.Map.map.GetLength(1)+ status.Map.map.GetLength(0)];
-
+            List<CellDto> cells = new List<CellDto>();
+            id = 1;
             foreach(var e in status.Map.map)
             {
-                cells[e.X + e.Y] = GetCell(e);
+                if (e == null)
+                    continue;
+
+                cells.Add(GetCell(e));
             }
 
 
-            return new GameDto(cells, 
+            return new GameDto(cells.ToArray(), 
                 true, 
                 false, 
                 status.Map.map.GetLength(1), 
@@ -27,15 +31,11 @@ namespace thegame.Services
                 status.Score);
         }
 
+        private static int id;
         private static CellDto GetCell(IEntity e)
         {
-
-
-
-            if(e is IStatic)
-                return new CellDto("1", new VectorDto(e.X, e.Y), "color1", "", 0);
-            return new CellDto("1", new VectorDto(e.X, e.Y), "color2", "", 0);
-            //return new CellDto("1", new VectorDto(e.X, e.Y), e.Image, "-", 1);
+            id++;
+            return new CellDto(id.ToString(), new VectorDto(e.X, e.Y), e.Image, "", 0);
         }
     }
 }

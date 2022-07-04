@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
+using thegame.Game;
 using thegame.Game.MapRepository;
 using thegame.Models;
 using thegame.Services;
@@ -19,9 +20,8 @@ namespace thegame.Controllers
         [HttpPost]
         public IActionResult Index()
         {
-            //return Ok(sessionRepository.GetSession(default(Guid)));
-
-            return Ok(TestData.AGameDto(new VectorDto(1, 1)));
+            var map = sessionRepository.CreateSession();
+            return Ok(ParserDto.ParseGameMap(map));
         }
     }
 }

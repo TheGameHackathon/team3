@@ -20,11 +20,12 @@ namespace thegame.Game.MapRepository
 
         public GameStatus CreateSession()
         {
-            throw new NotImplementedException();
+            return new GameStatus(asd, Models.Status.ContinueGame);
         }
 
         public GameStatus GetSession(Guid gameId)
         {
+
             return new GameStatus(asd, Models.Status.ContinueGame);
         }
     }
