@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
+using thegame.Game.Models;
+
+namespace thegame.Services;
 
 namespace thegame.Services
 {
-
-    public class GamesRepo
-    {
-
     private const string Level1Static =
         @"__XXXXX_
 XXX___X_
@@ -29,6 +26,35 @@ ________
 _1__111_
 ________
 ________";
+
+    private List<IEntity> ParseLevel()
+    {
+        var entities = new List<IEntity>();
+        foreach (var staticObject in Level1Static)
+        {
+            switch (staticObject)
+            {
+                case '_':
+                    //entities.Add(new Empty());
+                    break;
+                case 'X':
+                    break;
+                case '0':
+                    break;
+            }
+        }
+
+        foreach (var dynamicObject in Level1Static)
+        {
+            switch (dynamicObject)
+            {
+                case '1':
+                    break;
+                case 'P':
+                    break;
+            }
+        }
+
+        return entities;
     }
 }
-
