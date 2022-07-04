@@ -5,7 +5,7 @@ using thegame.Game.Models;
 
 namespace thegame.Services;
 
-public class GamesRepository
+namespace thegame.Services
 {
     private const string Level1Static =
         @"__XXXXX_
@@ -17,7 +17,6 @@ X_X_0_XX
 X__0__0X
 X___0__X
 XXXXXXXX";
-
     private const string Level1Dynamic =
         @"========
 ========

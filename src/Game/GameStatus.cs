@@ -1,11 +1,14 @@
-﻿using thegame.Game.Models;
+﻿using System;
+using thegame.Game.Models;
 
 namespace thegame.Game
 {
     public class GameStatus
     {
-        GameMap map;
-        Status status;
+        public Guid Id;
+        public int Score;
+        public GameMap map;
+        public Status status;
 
         public GameStatus(GameMap map, Status status)
         {

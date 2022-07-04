@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using thegame.Models;
 using thegame.Services;
 
-namespace thegame.Controllers;
-
-[Route("api/games")]
-public class GamesController : Controller
+namespace thegame.Controllers
 {
-    [HttpPost]
-    public IActionResult Index()
+    [Route("api/games")]
+    public class GamesController : Controller
     {
-        return Ok(TestData.AGameDto(new VectorDto {X = 1, Y = 1}));
+        [HttpPost]
+        public IActionResult Index()
+        {
+            return Ok(TestData.AGameDto(new VectorDto(1, 1)));
+        }
     }
 }
