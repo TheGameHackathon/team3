@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using thegame.Game;
 using thegame.Game.Models;
 
 namespace thegame.Services;
@@ -17,45 +19,68 @@ X___0__X
 XXXXXXXX";
 
     private const string Level1Dynamic =
-        @"________
-________
-__P1____
-____1___
-_____1__
-_____1__
-________
-_1__111_
-________
-________";
+        @"========
+========
+==P1====
+====1===
+=====1==
+=====1==
+========
+=1==111=
+========
+========";
 
-    private List<IEntity> ParseLevel()
+    private GameMap ParseLevel()
     {
-        var entities = new List<IEntity>();
-        foreach (var staticObject in Level1Static)
+        var l1StaticSplited = Level1Static.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
+        var l1DynamicSplited = Level1Dynamic.Split("\n\r", StringSplitOptions.RemoveEmptyEntries);
+        if (l1StaticSplited.Length == 0 || l1DynamicSplited.Length == 0) return new GameMap();
+
+        var width = l1StaticSplited[0].Length;
+        var height = l1StaticSplited.Length;
+
+        var entities = new IEntity[width, height];
+        var storages = new List<Storage>();
+
+        for (var i = 0; i < height; i++)
         {
-            switch (staticObject)
+            for (var j = 0; j < width; j++)
             {
-                case '_':
-                    //entities.Add(new Empty());
-                    break;
-                case 'X':
-                    break;
-                case '0':
-                    break;
+                var newEntity = Parse(l1StaticSplited[i][j], i, j, out var isStorage);
+
+                if (isStorage)
+                    storages.Add((Storage)newEntity);
+                else entities[i, j] = newEntity;
+
+                if (l1DynamicSplited[i][j] == '=') continue;
+                
+                var newEntityDynamic = Parse(l1StaticSplited[i][j], i, j, out var _);
+                entities[i, j] = newEntityDynamic;
             }
         }
 
-        foreach (var dynamicObject in Level1Static)
+        return new GameMap(entities, storages);
+    }
+
+    private IEntity Parse(char x, int i, int j, out bool isStorage)
+    {
+        isStorage = false;
+
+        switch (x)
         {
-            switch (dynamicObject)
-            {
-                case '1':
-                    break;
-                case 'P':
-                    break;
-            }
+            case '_':
+                return new Empty(i, j, "");
+            case 'X':
+                return new Wall(i, j, "");
+            case '0':
+                isStorage = true;
+                return new Storage(i, j, "");
+            case '1':
+                return new Box(i, j, "");
+            case 'P':
+                return new Player(i, j, "");
         }
 
-        return entities;
+        return new Empty(i, j, "");
     }
 }
