@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using thegame.Game;
 using thegame.Game.MapRepository;
-using thegame.Models;
 using thegame.Services;
 
 namespace thegame.Controllers

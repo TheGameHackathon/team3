@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using thegame.Game;
 using thegame.Game.Models;
 using thegame.Models;
